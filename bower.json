@@ -1,0 +1,22 @@
+{
+  "name": "category-theory-by-example",
+  "description": "Explaining category theory by example",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Risto-Stevcev/category-theory-by-example.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-console": "1.x",
+    "purescript-free": "1.2.x"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "1.x"
+  }
+}

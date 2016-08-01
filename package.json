@@ -1,0 +1,27 @@
+{
+  "name": "category-theory-by-example",
+  "version": "0.1.0",
+  "description": "Explaining category theory by example",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Risto-Stevcev/category-theory-by-example.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "prompt-sync": "4.x"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "learn",
+    "category",
+    "theory"
+  ],
+  "author": "Risto Stevcev",
+  "license": "MIT"
+}
