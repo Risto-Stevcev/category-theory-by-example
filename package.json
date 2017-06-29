@@ -13,9 +13,19 @@
   "dependencies": {
     "prompt-sync": "4.x"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "purescript-psa": "^0.5.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "./node_modules/.bin/bower install",
+    "pulp:watch": "pulp --watch build -- --censor-lib --stash --source-maps",
+    "pulp:build": "pulp build -- --censor-lib --stash --source-maps",
+    "pulp:run:free:monad:1": "npm run pulp:build && pulp run -m Free.Monad",
+    "pulp:run:free:monad:2": "npm run pulp:build && pulp run -m Free.Fs",
+    "pulp:test": "pulp build -I test -- --censor-lib --stash --source-maps && pulp test",
+    "build": "npm run pulp:build",
+    "clean": "rm -rf .pulp-cache output",
+    "path:npm": "export PATH=$PATH:/home/pureuser/node_modules/.bin"
   },
   "keywords": [
     "learn",

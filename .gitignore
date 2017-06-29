@@ -5,3 +5,8 @@
 /.psci*
 /src/.webpack.js
 *.tix
+foo.txt
+.cache
+.npm
+.psa-stash
+.config

@@ -13,10 +13,11 @@
     "output"
   ],
   "dependencies": {
-    "purescript-console": "1.x",
-    "purescript-free": "1.2.x"
+    "purescript-console": "^3.0.0",
+    "purescript-free": "^4.1.0",
+    "purescript-node-fs": "^4.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "1.x"
+    "purescript-psci-support": "^3.0.0"
   }
 }
