@@ -15,7 +15,8 @@
   "dependencies": {
     "purescript-console": "^3.0.0",
     "purescript-free": "^4.1.0",
-    "purescript-node-fs": "^4.0.0"
+    "purescript-node-fs": "^4.0.0",
+    "purescript-functors": "^2.1.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^3.0.0"

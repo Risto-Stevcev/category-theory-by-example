@@ -1,13 +1,12 @@
-module Free.Fs where
+module Free.FileSystem where
 
-import Prelude (class Functor, Unit, pure, bind, id, unit, (<<<), (<>), (*>))
+import Prelude (class Functor, Unit, pure, bind, id, unit, (<<<), (<>), (*>), ($))
 import Node.Path (FilePath)
 import Node.Encoding (Encoding(UTF8))
 import Node.FS (FS)
 import Node.FS.Sync (readTextFile, writeTextFile)
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Exception (EXCEPTION)
-import Control.Monad.Eff.Console (CONSOLE)
 import Control.Monad.Free (Free, foldFree, liftF)
 
 -- | Here's another example of a free monad DSL
@@ -33,10 +32,10 @@ instance functorFileSystemF :: Functor FileSystemF where
 
 -- | These just provide some nicer functions for working with free DSLs
 writeFile :: Encoding -> FilePath -> String -> FileSystem Unit
-writeFile encoding filePath string = liftF (WriteFile encoding filePath string unit)
+writeFile encoding filePath string = liftF $ WriteFile encoding filePath string unit
 
 readFile :: Encoding -> FilePath -> FileSystem String
-readFile encoding filePath = liftF (ReadFile encoding filePath id)
+readFile encoding filePath = liftF $ ReadFile encoding filePath id
 
 
 -- | Here's a sample program
@@ -49,10 +48,7 @@ echoHello = do
 
 interpreter :: forall a e. FileSystemF a -> Eff (fs :: FS, exception :: EXCEPTION | e) a
 interpreter x = case x of
-  WriteFile encoding filePath string next -> do
-    _ <- writeTextFile encoding filePath string
-    pure next
-
+  WriteFile encoding filePath string next -> writeTextFile encoding filePath string *> pure next
   ReadFile encoding filePath fNext -> do
     contents <- readTextFile encoding filePath
     -- | Remember the odd `String -> next` in the AST that was defined? this is why we needed it. The interpreter can
